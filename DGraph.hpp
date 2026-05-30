@@ -6,20 +6,23 @@ using namespace std;
 
 // Edge structure
 struct Edge {
-    string value;
+    char value;
     Edge* next;
 
-    Edge(string v);
+    Edge(char v);
 };
 
+
 // Node structure
+
 struct Node {
-    string value;
+    char value;
     bool visited;
     Edge* adjList;
 
     Node();
 };
+
 
 class DGraph {
 private:
@@ -27,28 +30,30 @@ private:
     int M[20][20];
     int size;
 
-    int findNode(string value);
+    int findNode(char value);
     void resetVisited();
-    void depthFirstHelper(int index, bool edge);
+    void depthFirstHelper(int index, bool edge, stringstream& ss);
 
 public:
     // Constructor
     DGraph();
+    ~DGraph();
 
     // Core functions
-    void addNode(string value);
-    void addEdge(string start, string end);
-    void listNodes();
-    void displayAdjacency();
-    void displayMatrix();
+    
+    void addNode(char value);
+    void addEdge(char start, char end);
+    string listNodes();
+    string displayAdjacency();
+    string displayMatrix();
 
     // Traversals
-    void breadthFirst(string start, bool edge = false, bool unreachable = true);
-    void depthFirst(string start, bool edge = false, bool unreachable = true);
+    string breadthFirst(char start, bool edge = false, bool unreachable = true);
+    string depthFirst(char start, bool edge = false, bool unreachable = true);
 
     // Advanced
-    void minTree(string start);
-    void connectTable();
+    string minTree(char start);
+    string connectTable();
 };
 
 #endif
